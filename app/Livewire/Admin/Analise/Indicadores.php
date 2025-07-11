@@ -226,7 +226,7 @@ class Indicadores extends Component
              
             session()->flash('success', 'Relatório criado com sucesso (em memória).');
             
-            return redirect()->route('analise.relatorio');
+            return redirect()->route('admin.analise.relatorio');
         } catch (\Exception $e) {
             LivewireAlert::title('Erro')
                 ->text($e->getMessage())
