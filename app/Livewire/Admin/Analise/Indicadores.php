@@ -223,9 +223,9 @@ class Indicadores extends Component
             }
             // Salva em sessão
             Cache::put('relatorio_temporario_' . auth()->id(), $dados, now()->addHours(6));
-             
+
             session()->flash('success', 'Relatório criado com sucesso (em memória).');
-            
+
             return redirect()->route('admin.analise.relatorio');
         } catch (\Exception $e) {
             LivewireAlert::title('Erro')
@@ -543,7 +543,7 @@ class Indicadores extends Component
 
                     // Obter o Custo das Mercadorias Vendidas (CMV)
                     $custoMercadoriasVendidas = $this->fromDRE($queryPeriodo, ['(-) CUSTO PRODUTOS/MERCADORIAS/SERVIÇOS']);
-            if ($custoMercadoriasVendidas === null || $custoMercadoriasVendidas <= 0 || $estoqueMedio === null || $estoqueMedio >= 0) {
+                    if ($custoMercadoriasVendidas === null || $custoMercadoriasVendidas <= 0 || $estoqueMedio === null || $estoqueMedio >= 0) {
                         Log::warning("igual a zero — divisão evitada.");
                         return null;
                     }

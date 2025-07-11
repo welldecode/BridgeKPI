@@ -5,9 +5,9 @@ use App\Http\Controllers\Admin\Dados\DadosBPController;
 use App\Http\Controllers\Admin\DreController;
 use App\Livewire\Admin\Dados\BalancoPatrimonial;
 use Illuminate\Support\Facades\Route;
-
-Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () {
-    Route::get('/dashboard', App\Livewire\Admin\Dashboard::class)->name('index');
+ 
+    Route::get('/', App\Livewire\Admin\Dashboard::class)->name('index');
+Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () { 
 
     Route::prefix('dados')->middleware(['auth', 'verified', 'plan_subscription'])->name('dados.')->group(function () {
         Route::get('/balanco_patrimonial', App\Livewire\Admin\Dados\BalancoPatrimonial::class)->name('balanco_patrimonial');
