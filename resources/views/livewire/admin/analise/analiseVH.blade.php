@@ -38,7 +38,39 @@
                         </select>
 
                     </div>
+{{-- Se for MENSAL, mostrar select de mês --}}
+@if ($type === 'mensal')
+    <div>
+        <label for="mesSelecionado" class="block">Mês:</label>
+        <select wire:model="mesSelecionado" id="mesSelecionado" class="border px-2 py-1 rounded">
+            <option value="1">Janeiro</option>
+            <option value="2">Fevereiro</option>
+            <option value="3">Março</option>
+            <option value="4">Abril</option>
+            <option value="5">Maio</option>
+            <option value="6">Junho</option>
+            <option value="7">Julho</option>
+            <option value="8">Agosto</option>
+            <option value="9">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+        </select>
+    </div>
+@endif
 
+{{-- Se for TRIMESTRAL, mostrar select de trimestre --}}
+@if ($type === 'trimestral')
+    <div>
+        <label for="trimestreSelecionado" class="block">Trimestre:</label>
+        <select wire:model="trimestreSelecionado" id="trimestreSelecionado" class="border px-2 py-1 rounded">
+            <option value="1">1º Trimestre (Jan-Mar)</option>
+            <option value="2">2º Trimestre (Abr-Jun)</option>
+            <option value="3">3º Trimestre (Jul-Set)</option>
+            <option value="4">4º Trimestre (Out-Dez)</option>
+        </select>
+    </div>
+@endif
                     <div>
                         <label for="order" class="block">Tipo de Analise:</label>
                         <select id="order" wire:model="order" class="border px-2 py-1 rounded">

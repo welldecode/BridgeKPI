@@ -41,13 +41,13 @@ class Dashboard extends Component
     public function gerarKpis(): void
     {
         // Pega os 4 últimos anos distintos, independentemente do tipo
-      $this->anosRecentes = Dres::select('year')
-    ->distinct()
-    ->orderByDesc('year')
-    ->limit(4)
-    ->pluck('year')
-    ->values()
-    ->toArray();
+        $this->anosRecentes = Dres::select('year')
+            ->distinct()
+            ->orderByDesc('year')
+            ->limit(4)
+            ->pluck('year')
+            ->values()
+            ->toArray();
 
         // Busca registros para os 4 anos recentes e para a periodicidade selecionada
         $registros = Dres::where('type', $this->periodicidade)
