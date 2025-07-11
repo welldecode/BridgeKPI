@@ -6,9 +6,11 @@ use App\Http\Controllers\Admin\DreController;
 use App\Livewire\Admin\Dados\BalancoPatrimonial;
 use Illuminate\Support\Facades\Route;
  
-    Route::get('/', App\Livewire\Admin\Dashboard::class)->name('index');
-Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () { 
 
+    Route::redirect('/', 'admin/');
+Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(function () {
+
+Route::get('/', App\Livewire\Admin\Dashboard::class)->name('index');
     Route::prefix('dados')->middleware(['auth', 'verified', 'plan_subscription'])->name('dados.')->group(function () {
         Route::get('/balanco_patrimonial', App\Livewire\Admin\Dados\BalancoPatrimonial::class)->name('balanco_patrimonial');
         Route::get('/dre', App\Livewire\Admin\Dados\Dre::class)->name('dre');
@@ -23,8 +25,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->name('admin.')->group(
         Route::get('/balanco_patrimonial', App\Livewire\Admin\Demo\BP::class)->name('bp');
         Route::get('/dre', App\Livewire\Admin\Demo\Dre::class)->name('dre');
 
-        
-        Route::post('/balanco_patrimonial', [DadosBPController::class, 'store'])->name('balanco_patrimonial');  
+
+        Route::post('/balanco_patrimonial', [DadosBPController::class, 'store'])->name('balanco_patrimonial');
     });
 });
 
@@ -32,9 +34,9 @@ Route::prefix('profile')->middleware(['auth', 'verified', 'plan_subscription'])-
     Route::get('/user', App\Livewire\Profile\User::class)->name('user');
     Route::get('/business', App\Livewire\Profile\Business::class)->name('business');
     Route::get('/signature', App\Livewire\Profile\Plans::class)->name('signature');
-    Route::get('/invoices', App\Livewire\Profile\Invoices::class)->name('invoices'); 
-    Route::get('/invoices/{id}', App\Livewire\Profile\InvoicesVIew::class)->name('invoiceview'); 
- 
+    Route::get('/invoices', App\Livewire\Profile\Invoices::class)->name('invoices');
+    Route::get('/invoices/{id}', App\Livewire\Profile\InvoicesVIew::class)->name('invoiceview');
+
 });
 
 Route::prefix('cart')->name('cart.')->group(function () {
