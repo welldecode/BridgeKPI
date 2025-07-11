@@ -223,8 +223,10 @@ class Indicadores extends Component
             }
             // Salva em sessão
             Cache::put('relatorio_temporario_' . auth()->id(), $dados, now()->addHours(6));
-
+             
             session()->flash('success', 'Relatório criado com sucesso (em memória).');
+            
+            return redirect()->route('analise.relatorio');
         } catch (\Exception $e) {
             LivewireAlert::title('Erro')
                 ->text($e->getMessage())
